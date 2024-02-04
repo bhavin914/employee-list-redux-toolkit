@@ -1,0 +1,38 @@
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  --primaryColor: #6554df;
+}
+.form{
+  text-align: center;
+}
+.app {
+  background-color: white;
+  font-family: 'Inter', sans-serif;
+  /* height: 100vh; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.card {
+  height: auto;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  
+}
+.formdiv{
+  background-color: white;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  padding: 0px 0 40px 0;
+  border-radius: 20px;
+  margin-top: 20px;
+}
