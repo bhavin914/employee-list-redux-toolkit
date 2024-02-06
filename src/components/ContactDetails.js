@@ -1,109 +1,119 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { styled } from "styled-components";
 import { FormContext } from "../context/form-context";
+import { useDispatch } from "react-redux";
+import { addFormData } from "../Slices/FormSlice";
 
 const ContactDetailPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
   const { formState, updateFormState } = useContext(FormContext);
+  const dispatch = useDispatch();
 
-  const fullNameHandler = (e) => {
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let tempErrors = {};
+    tempErrors.Fullname = formState.Fullname ? "" : "Name is required.";
+    tempErrors.Email = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formState.Email)
+      ? ""
+      : "Email is not valid.";
+    tempErrors.Phonenumber =
+      formState.Phonenumber.length > 0 ? "" : "Phone number is required.";
+    tempErrors.CompanyName = formState.CompanyName
+      ? ""
+      : "Company name is required.";
+    setErrors(tempErrors);
+    return Object.values(tempErrors).every((x) => x === ""); // Returns true if all errors are empty
+  };
+  const handleChange = (e) => {
     const { name, value } = e.target;
     updateFormState({ [name]: value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform form submission logic
-    // dispatch(addFormData(formState));
-    // Navigate to the next step
-    setScrrenPoint(2);
-    setIsShowSelectedScreen("signup");
+    // dispatch(
+    //   addFormData({
+    //     id: "contactDetails",
+    //     data: formState,
+    //   })
+    // );
+
+    if (validateForm()) {
+      setScrrenPoint(2);
+      setIsShowSelectedScreen("signup");
+    }
   };
-
-  // const displayNameHandler = (event) => {
-  //   setfirstform((prevData) => ({
-  //     ...prevData,
-  //     CompanyName: event.target.value,
-  //   }));
-  //   // event.target.value === ""
-  //   //   ? setValidation((prevData) => ({ ...prevData, CompanyName: false }))
-  //   //   : setValidation((prevData) => ({ ...prevData, CompanyName: true }));
-  // };
-
-  // const EmailHandler = (event) => {
-  //   setfirstform((prevData) => ({ ...prevData, Email: event.target.value }));
-  //   // event.target.value === ""
-  //   //   ? setValidation((prevData) => ({ ...prevData, Email: false }))
-  //   //   : setValidation((prevData) => ({ ...prevData, Email: true }));
-  // };
-
-  // const phonenumberHandler = (event) => {
-  //   setfirstform((prevData) => ({ ...prevData, Phonenumber: event.target.value }));
-  //   // event.target.value === ""
-  //   //   ? setValidation((prevData) => ({ ...prevData, Phonenumber: false }))
-  //   //   : setValidation((prevData) => ({ ...prevData, Phonenumber: true }));
-  // };
 
   return (
     <Wrapper>
       <span className="container title">
-        <h1>Contact Details</h1>
-        <p>
-          Please fill the form below to receive an interview details and other
-          information that is regarding the task.
-        </p>
+        <h2>Contact details</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisc.</p>
       </span>
       <form onSubmit={handleSubmit}>
         <div className="twoinput">
           <span className="container">
-            <p>Full Name</p>
+            <p className="fieldName">Name</p>
             <input
               className="inputField"
               type="text"
               name="Fullname"
-              placeholder="Steve Jobs"
-              onChange={fullNameHandler}
-              value={formState.Fullname}
+              placeholder="John Carter"
+              onChange={handleChange}
+              value={formState.Fullname || ""}
             />
+            {/* {errors.Fullname && (
+              <span className="error">{errors.Fullname}</span>
+            )} */}
           </span>
           <span className="container">
-            <p>Email</p>
+            <p className="fieldName">Email</p>
             <input
               className="inputField"
               type="email"
               name="Email"
-              placeholder="abc@gmail.com"
-              onChange={fullNameHandler}
-              value={formState.Email}
+              placeholder="Email address"
+              onChange={handleChange}
+              value={formState.Email || ""}
             />
+            {/* {errors.Email && <span className="error">{errors.Email}</span>} */}
           </span>
         </div>
         <div className="twoinput">
           <span className="container">
-            <p>Company Name</p>
+            <p className="fieldName">Phone Number</p>
+            <input
+              className="inputField"
+              type="number"
+              name="Phonenumber"
+              placeholder="(123) 456 - 7890"
+              onChange={handleChange}
+              value={formState.Phonenumber || ""}
+            />
+          </span>
+          {/* {errors.Phonenumber && (
+            <span className="error">{errors.Phonenumber}</span>
+          )} */}
+          <span className="container">
+            <p className="fieldName">Company</p>
             <input
               className="inputField"
               type="text"
               name="CompanyName"
               placeholder="Steve"
-              onChange={fullNameHandler}
-              value={formState.CompanyName}
+              onChange={handleChange}
+              value={formState.CompanyName || ""}
             />
-          </span>
-          <span className="container">
-            <p>Phone Number</p>
-            <input
-              className="inputField"
-              type="number"
-              name="Phonenumber"
-              placeholder="Steve"
-              onChange={fullNameHandler}
-              value={formState.Phonenumber}
-            />
+            {/* {errors.CompanyName && (
+              <span className="error">{errors.CompanyName}</span>
+            )} */}
           </span>
         </div>
-        <button type="submit" className="button">
-          Next
-        </button>
+        <div className="multiButton">
+          {/* <button className="prevBtn"> Previous Step</button> */}
+          <button type="submit" className="button">
+            Next Step
+          </button>
+        </div>
       </form>
     </Wrapper>
   );
@@ -126,7 +136,11 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: space-between;
   }
-
+  .fieldName {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+  }
   .container_row {
     display: flex;
     flex-direction: row;
@@ -228,7 +242,41 @@ const Wrapper = styled.div`
     color: var(--primaryColor);
     margin-bottom: 3vh;
   }
+  .button {
+    background: #4a3aff;
+    height: 2.5rem;
+    width: 34%;
+    margin: 0 auto;
+    max-width: 8rem;
+    color: white;
+    border: none;
+    border-radius: 56px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    font-weight: bold;
+    margin-right: 0;
+  }
 
+  .multiButton {
+    display: flex;
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .prevBtn {
+    margin-left: 0;
+    background: white;
+    color: #4a3aff;
+    border: 1px solid #4a3aff;
+    border-radius: 56px;
+  }
   @media screen and (max-width: 350px) {
     .staticInput {
       font-size: 0.5rem;

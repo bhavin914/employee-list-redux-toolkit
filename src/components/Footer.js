@@ -28,18 +28,16 @@ const Wrapper = styled.footer`
   .footer-container {
     width: 100%;
     background-color: #ffffff;
-
     box-shadow: 0 -2px 4px #d9dbe9;
-    position: absolute;
+    // position: sticky;
     bottom: 0;
-    left: 0;
   }
 
   .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding: 0.5rem 2rem;
   }
 
   .footer-header {

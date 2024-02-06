@@ -6,13 +6,16 @@ import App from "./App";
 import store from "./store/Store";
 import { FormProvider } from "./context/form-context";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <FormProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </FormProvider>
-  </React.StrictMode>
-);
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <FormProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </FormProvider>
+    </React.StrictMode>
+  );
+}

@@ -3,8 +3,8 @@ import { styled } from "styled-components";
 import { ProgressBar, Step as ProgressBarStep } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
 import ContactDetailPage from "./ContactDetails";
-import ServicePage from "./WorkspaceForm";
-import QuotionPage from "./UsageForm";
+import ServicePage from "./ServicePage";
+import QuotionPage from "./QuotationPage";
 import SubmissionPage from "./CongratzPage";
 
 const StepManager = () => {
@@ -44,7 +44,7 @@ const StepManager = () => {
           setIsShowSelectedScreen={setIsShowSelectedScreen}
         />
       ),
-      showIn: ["service"],
+      showIn: ["signup"],
     },
     {
       component: (
@@ -129,12 +129,6 @@ const Wrapper = styled.div`
     font-size: small;
   }
 
-  . FormWrapper {
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
-  }
-
   .form {
     display: flex;
     flex-direction: column;
@@ -151,9 +145,10 @@ const Wrapper = styled.div`
   }
   .RSPBprogressBar {
     background: #eff0f6;
+    height: 6px;
   }
   .ProgressBarContainer {
-    width: 75%;
+    width: 60%;
     margin: 0 auto;
     padding: 35px 0px;
     border-bottom: 1px solid;
@@ -168,8 +163,8 @@ const Wrapper = styled.div`
 `;
 
 const StepNumber = styled.div`
-  width: 34px;
-  height: 34px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   display: flex;
   align-items: center;

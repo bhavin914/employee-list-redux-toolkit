@@ -1,8 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const onSubmit = () => {
+    navigate("/table");
+  };
   return (
     <div>
       <Wrapper>
@@ -10,13 +15,16 @@ const Header = () => {
           <div className="header-content">
             <h1 className="header-text">Aimbrill Techinfo</h1>
             <div>
-              <button href="#employee-list" className="header-btn">
+              <button
+                href="#employee-list"
+                className="header-btn"
+                onClick={onSubmit}
+              >
                 Employee List
               </button>
             </div>
           </div>
         </header>
-        {/* <LoginScreen /> */}
       </Wrapper>
     </div>
   );
@@ -29,7 +37,7 @@ const Wrapper = styled.div`
     position: sticky;
     top: 0;
     background-color: white;
-    padding: 2rem;
+    padding: 1rem;
   }
 
   .header-content {
