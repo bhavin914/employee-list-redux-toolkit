@@ -295,7 +295,7 @@ const Wrapper = styled.div`
       margin: 0 auto;
     }
     .container {
-      width: 40%;
+      width: 100%;
     }
   }
 `;

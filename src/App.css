@@ -13,7 +13,7 @@
   background-color: white;
   font-family: "Inter", sans-serif;
  
-  height: 67vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -88,17 +88,20 @@
 }
 @media screen and (max-width: 768px) {
   .card {
-    width: 90%; /* Adjust as needed */
+    width: 90%; 
+    margin: 0 auto;
   }
 
-  .formdiv {
-    width: 90%;
-  }
+
 }
 
 @media screen and (max-width: 480px) {
   .inputField {
     width: 100%;
     max-width: none;
+  }
+  .formdiv {
+    width: 90%;
+    margin: auto;
   }
 }

@@ -93,11 +93,16 @@ const Wrapper = styled.footer`
 
     .footer-input {
       width: 100%;
+      margin: 0 auto;
       margin-top: 0.5rem;
     }
 
     .email-input {
       flex: 1;
+    }
+    .footer-header {
+      text-align: center;
+      margin: 0 auto;
     }
   }
 `;

@@ -64,7 +64,10 @@ const Wrapper = styled.div`
 
   @media (max-width: 768px) {
     .header-content h1 {
-      font-size: 1.5rem;
+      font-size: 17px;
+    }
+    .header-btn {
+      padding: 6px 10px;
     }
   }
 `;

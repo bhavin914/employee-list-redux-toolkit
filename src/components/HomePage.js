@@ -54,4 +54,12 @@ const Wrapper = styled.div`
     line-height: 30px;
     font-sixe: 13px;
   }
+  @media (max-width: 768px) {
+    .title {
+      font-size: 19px;
+    }
+    .header-text {
+      width: 77%;
+    }
+  }
 `;
