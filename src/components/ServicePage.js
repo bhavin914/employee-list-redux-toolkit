@@ -284,10 +284,6 @@ const Wrapper = styled.div`
 
   /* Responsive Design */
   @media (max-width: 768px) {
-    .container {
-      grid-template-columns: 1fr;
-    }
-
     .btn {
       padding: 15px 20px;
     }
@@ -316,6 +312,10 @@ const Wrapper = styled.div`
 
     .text {
       font-size: 0.8rem;
+    }
+    .multiButton {
+      width: 90%;
+      margin: 0 auto;
     }
   }
 `;

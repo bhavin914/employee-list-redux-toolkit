@@ -231,25 +231,6 @@ const Wrapper = styled.div`
     border-radius: 56px;
   }
 
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .container {
-      grid-template-columns: 1fr; /* Stack the buttons on smaller screens */
-    }
-
-    .btn {
-      padding: 15px 20px; /* Smaller padding on smaller screens */
-    }
-
-    .icon {
-      font-size: 1.2rem;
-    }
-
-    .text {
-      font-size: 0.9rem;
-    }
-  }
-
   @media (max-width: 480px) {
     .btn {
       padding: 10px 15px; /* Even smaller padding on very small screens */
@@ -262,6 +243,10 @@ const Wrapper = styled.div`
 
     .text {
       font-size: 0.8rem;
+    }
+    .multiButton {
+      width: 90%;
+      margin: 0 auto;
     }
   }
 `;

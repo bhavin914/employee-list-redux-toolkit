@@ -285,9 +285,13 @@ const Wrapper = styled.div`
     border: 1px solid #4a3aff;
     border-radius: 56px;
   }
-  @media screen and (max-width: 350px) {
+  @media screen and (max-width: 480px) {
     .staticInput {
       font-size: 0.5rem;
+    }
+    .multiButton {
+      width: 90%;
+      margin: 0 auto;
     }
   }
   @media screen and (max-width: 768px) {

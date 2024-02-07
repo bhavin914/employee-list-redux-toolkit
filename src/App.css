@@ -21,7 +21,7 @@
   padding-top: 20px;
 }
 
-.gxQDmV button {
+.button {
   background: #4a3aff;
   height: 2.5rem;
   width: 34%;
@@ -86,14 +86,7 @@
   overflow-y: auto;
   height: calc(100vh - 120px); 
 }
-@media screen and (max-width: 768px) {
-  .card {
-    width: 90%; 
-    margin: 0 auto;
-  }
 
-
-}
 
 @media screen and (max-width: 480px) {
   .inputField {
@@ -103,5 +96,9 @@
   .formdiv {
     width: 90%;
     margin: auto;
+  }
+  .card {
+    width: 90%; 
+    margin: 0 auto;
   }
 }

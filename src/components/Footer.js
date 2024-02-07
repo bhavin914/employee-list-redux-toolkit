@@ -97,12 +97,15 @@ const Wrapper = styled.footer`
       margin-top: 0.5rem;
     }
 
-    .email-input {
-      flex: 1;
-    }
     .footer-header {
       text-align: center;
       margin: 0 auto;
+    }
+    .header-text {
+      font-size: 20px;
+    }
+    .company-policy {
+      font-size: 15px;
     }
   }
 `;
