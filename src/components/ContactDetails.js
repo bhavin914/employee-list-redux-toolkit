@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { styled } from "styled-components";
 import { FormContext } from "../context/form-context";
 import { useDispatch } from "react-redux";
-import { addFormData } from "../Slices/FormSlice";
 import { Modal } from "antd";
 
 const ContactDetailPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
@@ -54,12 +53,6 @@ const ContactDetailPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(
-    //   addFormData({
-    //     id: "contactDetails",
-    //     data: formState,
-    //   })
-    // );
 
     if (validateForm()) {
       setScrrenPoint(2);
@@ -295,6 +288,14 @@ const Wrapper = styled.div`
   @media screen and (max-width: 350px) {
     .staticInput {
       font-size: 0.5rem;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .title {
+      margin: 0 auto;
+    }
+    .container {
+      width: 40%;
     }
   }
 `;

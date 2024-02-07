@@ -6,23 +6,9 @@ import { FormContext } from "../context/form-context";
 import { Modal } from "antd";
 
 const QuotionPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
-  const dispatch = useDispatch();
   const { formState, updateFormState } = useContext(FormContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  // const fullNameHandler = (e) => {
-  //   const { name, value } = e.target;
-  //   updateFormState({ [name]: value });
-  // };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   dispatch(addFormData(formState));
-  //   updateFormState();
-
-  //   setScrrenPoint(4);
-  //   setIsShowSelectedScreen("default");
-  // };
   const handlePreviousClick = () => {
     setScrrenPoint(2);
     setIsShowSelectedScreen("signup");

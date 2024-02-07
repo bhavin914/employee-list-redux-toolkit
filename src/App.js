@@ -9,7 +9,7 @@ import MyTable from "../src/components/Table";
 const MainLayout = () => (
   <>
     <Header />
-    {<HomePage />}
+    <div className="scrollable-content">{<HomePage />}</div>
     <Footer />
   </>
 );

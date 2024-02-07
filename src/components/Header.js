@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import styled from "styled-components";
 
 const Header = () => {
@@ -14,7 +13,7 @@ const Header = () => {
         <header className="sticky-header">
           <div className="header-content">
             <h1 className="header-text">Aimbrill Techinfo</h1>
-            <div>
+            <div className="parant-btn">
               <button
                 href="#employee-list"
                 className="header-btn"
@@ -34,10 +33,13 @@ export default Header;
 
 const Wrapper = styled.div`
   .sticky-header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     background-color: white;
     padding: 1rem;
+    z-index: 1000;
   }
 
   .header-content {
@@ -55,6 +57,9 @@ const Wrapper = styled.div`
     font-weight: bold;
     text-align: center;
     cursor: pointer;
+  }
+  .parant-btn {
+    padding-right: 29px;
   }
 
   @media (max-width: 768px) {

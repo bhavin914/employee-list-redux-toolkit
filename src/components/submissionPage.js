@@ -108,6 +108,6 @@ const Wrapper = styled.div`
     color: #4a3aff;
     border: 1px solid #4a3aff;
     border-radius: 56px;
-    width: 12rem;
+    width: 34%rem;
   }
 `;

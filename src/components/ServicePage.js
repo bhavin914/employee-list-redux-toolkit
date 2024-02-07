@@ -12,19 +12,7 @@ import { Modal } from "antd";
 const ServicePage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
   const { formState, updateFormState } = useContext(FormContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const dispatch = useDispatch();
 
-  // const fullNameHandler = (e) => {
-  //   const { name, value } = e.target;
-  //   updateFormState({ [name]: value });
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   setScrrenPoint(3);
-  //   setIsShowSelectedScreen("usescreen");
-  // };
   const handlePreviousClick = () => {
     setScrrenPoint(2);
     setIsShowSelectedScreen("default");
@@ -49,8 +37,6 @@ const ServicePage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
       showModal();
       return;
     }
-
-    // dispatch(addFormData(formDataWithId));
 
     setScrrenPoint(3);
     setIsShowSelectedScreen("usescreen");
@@ -136,7 +122,7 @@ const ServicePage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
           title="Error"
           open={isModalVisible}
           onOk={handleOk}
-          onCancel={handleOk} // Use handleOk to close the modal on cancel as well
+          onCancel={handleOk}
           okText="Ok"
           cancelText="Cancel"
         >
@@ -299,11 +285,11 @@ const Wrapper = styled.div`
   /* Responsive Design */
   @media (max-width: 768px) {
     .container {
-      grid-template-columns: 1fr; /* Stack the buttons on smaller screens */
+      grid-template-columns: 1fr;
     }
 
     .btn {
-      padding: 15px 20px; /* Smaller padding on smaller screens */
+      padding: 15px 20px;
     }
 
     .icon {
@@ -316,8 +302,11 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: 480px) {
+    .item-box {
+      padding: 15px;
+    }
     .btn {
-      padding: 10px 15px; /* Even smaller padding on very small screens */
+      padding: 10px 15px;
     }
 
     .icon {

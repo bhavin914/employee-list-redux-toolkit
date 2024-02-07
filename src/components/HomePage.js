@@ -19,11 +19,6 @@ const HomePage = ({ isShowSelectedScreen }) => {
     <div>
       <Wrapper>
         <div className="header-text">
-          {/* <h2 className="title">Get an Employee Information</h2>
-            <p className="description">
-              Please fill the form below to receive an interview details and
-              other information that is regarding the task
-            </p> */}
           <h2 className="title">{title}</h2>
           <p className="description">{description}</p>
         </div>
@@ -45,6 +40,7 @@ const Wrapper = styled.div`
     text-align: center;
     display: grid;
     gap: 10px;
+    padding-top: 20px;
   }
 
   .title {

@@ -29,8 +29,9 @@ const Wrapper = styled.footer`
     width: 100%;
     background-color: #ffffff;
     box-shadow: 0 -2px 4px #d9dbe9;
-    // position: sticky;
+    position: fixed;
     bottom: 0;
+    left: 0;
   }
 
   .footer-content {
