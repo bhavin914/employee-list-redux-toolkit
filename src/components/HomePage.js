@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import StepManager from "./stepManger";
 
-const HomePage = ({ screenPoint, isShowSelectedScreen }) => {
+const HomePage = ({ isShowSelectedScreen }) => {
+  const currentPage = "contactDetail";
+
+  let title, description;
+  if (currentPage) {
+    title = "Get an Employee Information";
+    description =
+      "Please fill the form below to receive an interview details and other information that is regarding the task";
+  } else {
+    title = "Next Steps in the Process";
+    description =
+      "Please continue to follow the steps to complete your request.";
+  }
   return (
     <div>
       <Wrapper>
         <div className="header-text">
-          <h2 className="title">Get an Employee Information</h2>
-          <p className="description">
-            Please fill the form below to receive an interview details and other
-            information that is regarding the task
-          </p>
+          {/* <h2 className="title">Get an Employee Information</h2>
+            <p className="description">
+              Please fill the form below to receive an interview details and
+              other information that is regarding the task
+            </p> */}
+          <h2 className="title">{title}</h2>
+          <p className="description">{description}</p>
         </div>
+
         <div className="app">
           <StepManager />
         </div>

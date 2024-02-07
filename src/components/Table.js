@@ -180,9 +180,9 @@ function MyTable() {
         columns={columns}
         pagination={false}
       />
-      <ButtonStyled onClick={() => navigate("/")} type="primary">
+      <button onClick={() => navigate("/")} type="primary" className="button">
         Add New Data
-      </ButtonStyled>
+      </button>
     </Wrapper>
   );
 }
@@ -191,15 +191,24 @@ export default MyTable;
 
 const Wrapper = styled.div`
   padding: 20px;
-`;
 
-const ButtonStyled = styled(Button)`
-  background: #4a3aff;
-  border-color: #4a3aff;
-  &:hover,
-  &:focus {
-    background: #372f9f;
-    border-color: #372f9f;
+  .button {
+    background: #4a3aff;
+    height: 2.5rem;
+    width: 34%;
+    margin: 0 auto;
+    max-width: 8rem;
+    color: white;
+    border: none;
+    border-radius: 56px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    font-weight: bold;
+    margin-right: 0;
   }
 `;
 

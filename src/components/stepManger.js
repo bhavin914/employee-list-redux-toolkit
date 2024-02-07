@@ -5,7 +5,8 @@ import "react-step-progress-bar/styles.css";
 import ContactDetailPage from "./ContactDetails";
 import ServicePage from "./ServicePage";
 import QuotionPage from "./QuotationPage";
-import SubmissionPage from "./CongratzPage";
+import SubmissionPage from "./submissionPage";
+import HomePage from "./HomePage";
 
 const StepManager = () => {
   const [screenPoint, setScrrenPoint] = useState(1);
@@ -29,31 +30,35 @@ const StepManager = () => {
 
   const allScreens = [
     {
+      id: "contactDetail",
       component: (
         <ContactDetailPage
+          isShow={true}
           setScrrenPoint={setScrrenPoint}
           setIsShowSelectedScreen={setIsShowSelectedScreen}
         />
       ),
-      showIn: ["default"],
+      showIn: ["default", "contactDetail"],
     },
     {
       component: (
         <ServicePage
+          isShow={false}
           setScrrenPoint={setScrrenPoint}
           setIsShowSelectedScreen={setIsShowSelectedScreen}
         />
       ),
-      showIn: ["signup"],
+      showIn: ["signup", "service"],
     },
     {
       component: (
         <QuotionPage
+          isShow={false}
           setScrrenPoint={setScrrenPoint}
           setIsShowSelectedScreen={setIsShowSelectedScreen}
         />
       ),
-      showIn: ["usescreen"],
+      showIn: ["usescreen", "quotation"],
     },
     {
       component: (
@@ -62,7 +67,7 @@ const StepManager = () => {
           setIsShowSelectedScreen={setIsShowSelectedScreen}
         />
       ),
-      showIn: ["default"],
+      showIn: ["default", "submission"],
     },
   ];
 

@@ -3,26 +3,50 @@ import { styled } from "styled-components";
 import { FormContext } from "../context/form-context";
 import { useDispatch } from "react-redux";
 import { addFormData } from "../Slices/FormSlice";
+import { Modal } from "antd";
 
 const ContactDetailPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
   const { formState, updateFormState } = useContext(FormContext);
   const dispatch = useDispatch();
 
-  const [errors, setErrors] = useState({});
+  const showModal = (message) => {
+    Modal.error({
+      title: "Validation Error",
+      content: message,
+    });
+  };
 
   const validateForm = () => {
     let tempErrors = {};
-    tempErrors.Fullname = formState.Fullname ? "" : "Name is required.";
-    tempErrors.Email = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formState.Email)
-      ? ""
-      : "Email is not valid.";
-    tempErrors.Phonenumber =
-      formState.Phonenumber.length > 0 ? "" : "Phone number is required.";
-    tempErrors.CompanyName = formState.CompanyName
-      ? ""
-      : "Company name is required.";
-    setErrors(tempErrors);
-    return Object.values(tempErrors).every((x) => x === ""); // Returns true if all errors are empty
+    let isValid = true;
+
+    if (!formState.Fullname) {
+      tempErrors.Fullname = "Name is required.";
+      isValid = false;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formState.Email)) {
+      tempErrors.Email = "Email is not valid.";
+      isValid = false;
+    }
+    if (formState.Phonenumber.length === 0) {
+      tempErrors.Phonenumber = "Phone number is required.";
+      isValid = false;
+    }
+    if (!formState.CompanyName) {
+      tempErrors.CompanyName = "Company name is required.";
+      isValid = false;
+    }
+
+    // Show modal if form is not valid
+    if (!isValid) {
+      showModal(
+        Object.values(tempErrors)
+          .filter((error) => error)
+          .join("\n")
+      );
+    }
+
+    return isValid;
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,9 +85,6 @@ const ContactDetailPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
               onChange={handleChange}
               value={formState.Fullname || ""}
             />
-            {/* {errors.Fullname && (
-              <span className="error">{errors.Fullname}</span>
-            )} */}
           </span>
           <span className="container">
             <p className="fieldName">Email</p>
@@ -75,7 +96,6 @@ const ContactDetailPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
               onChange={handleChange}
               value={formState.Email || ""}
             />
-            {/* {errors.Email && <span className="error">{errors.Email}</span>} */}
           </span>
         </div>
         <div className="twoinput">
@@ -90,9 +110,7 @@ const ContactDetailPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
               value={formState.Phonenumber || ""}
             />
           </span>
-          {/* {errors.Phonenumber && (
-            <span className="error">{errors.Phonenumber}</span>
-          )} */}
+
           <span className="container">
             <p className="fieldName">Company</p>
             <input
@@ -103,9 +121,6 @@ const ContactDetailPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
               onChange={handleChange}
               value={formState.CompanyName || ""}
             />
-            {/* {errors.CompanyName && (
-              <span className="error">{errors.CompanyName}</span>
-            )} */}
           </span>
         </div>
         <div className="multiButton">
