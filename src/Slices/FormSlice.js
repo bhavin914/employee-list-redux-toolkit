@@ -17,8 +17,14 @@ const formSlice = createSlice({
         state.push(newFormData);
       }
     },
+    deleteFormData: (state, action) => {
+      const index = state.formData?.findIndex(
+        (item) => item.key === action.payload
+      );
+      if (index !== -1) state.formData?.splice(index, 1);
+    },
   },
 });
 
-export const { addFormData } = formSlice.actions;
+export const { addFormData, deleteFormData } = formSlice.actions;
 export default formSlice.reducer;

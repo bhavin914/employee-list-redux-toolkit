@@ -1,13 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Table, Tag } from "antd";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { deleteFormData } from "../Slices/FormSlice";
 
 function MyTable() {
   const formData = useSelector((state) => state.form);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleDelete = (key) => {
+    dispatch(deleteFormData(key));
+  };
 
   const rowSelection = {
     selections: [
@@ -18,7 +23,7 @@ function MyTable() {
         text: "Select Odd Rows",
         onSelect: (changableRowKeys) => {
           let newSelectedRowKeys = [];
-          newSelectedRowKeys = changableRowKeys.filter((key, index) => {
+          newSelectedRowKeys = changableRowKeys?.filter((key, index) => {
             if (index % 2 !== 0) {
               return false;
             }
@@ -64,8 +69,15 @@ function MyTable() {
       key: "budget",
       render: (status) => (
         <span>
-          <Tag color={status === "full time" ? "green" : "red"}>{status}</Tag>
+          <Tag color={"red"}>{status}</Tag>
         </span>
+      ),
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (text, record) => (
+        <button onClick={() => handleDelete(record.key)}>Delete</button>
       ),
     },
   ];

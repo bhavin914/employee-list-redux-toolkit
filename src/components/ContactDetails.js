@@ -3,6 +3,10 @@ import { styled } from "styled-components";
 import { FormContext } from "../context/form-context";
 import { useDispatch } from "react-redux";
 import { Modal } from "antd";
+import Email from "../images/Email.svg";
+import Building from "../images/Building.svg";
+import Person from "../images/Person.svg";
+import Vector from "../images/Vector.svg";
 
 const ContactDetailPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
   const { formState, updateFormState } = useContext(FormContext);
@@ -70,50 +74,62 @@ const ContactDetailPage = ({ setScrrenPoint, setIsShowSelectedScreen }) => {
         <div className="twoinput">
           <span className="container">
             <p className="fieldName">Name</p>
-            <input
-              className="inputField"
-              type="text"
-              name="Fullname"
-              placeholder="John Carter"
-              onChange={handleChange}
-              value={formState.Fullname || ""}
-            />
+            <div className="inputIconWrapper">
+              <input
+                className="inputField"
+                type="text"
+                name="Fullname"
+                placeholder="John Carter"
+                onChange={handleChange}
+                value={formState.Fullname || ""}
+              />
+              <img src={Person} className="inputIcon"></img>
+            </div>
           </span>
           <span className="container">
             <p className="fieldName">Email</p>
-            <input
-              className="inputField"
-              type="email"
-              name="Email"
-              placeholder="Email address"
-              onChange={handleChange}
-              value={formState.Email || ""}
-            />
+            <div className="inputIconWrapper">
+              <input
+                className="inputField"
+                type="email"
+                name="Email"
+                placeholder="Email address"
+                onChange={handleChange}
+                value={formState.Email || ""}
+              />
+              <img src={Email} className="inputIcon"></img>
+            </div>
           </span>
         </div>
         <div className="twoinput">
           <span className="container">
             <p className="fieldName">Phone Number</p>
-            <input
-              className="inputField"
-              type="number"
-              name="Phonenumber"
-              placeholder="(123) 456 - 7890"
-              onChange={handleChange}
-              value={formState.Phonenumber || ""}
-            />
+            <div className="inputIconWrapper">
+              <input
+                className="inputField"
+                type="number"
+                name="Phonenumber"
+                placeholder="(123) 456 - 7890"
+                onChange={handleChange}
+                value={formState.Phonenumber || ""}
+              />
+              <img src={Vector} className="inputIcon"></img>
+            </div>
           </span>
 
           <span className="container">
             <p className="fieldName">Company</p>
-            <input
-              className="inputField"
-              type="text"
-              name="CompanyName"
-              placeholder="Steve"
-              onChange={handleChange}
-              value={formState.CompanyName || ""}
-            />
+            <div className="inputIconWrapper">
+              <input
+                className="inputField"
+                type="text"
+                name="CompanyName"
+                placeholder="Steve"
+                onChange={handleChange}
+                value={formState.CompanyName || ""}
+              />
+              <img src={Building} className="inputIcon"></img>
+            </div>
           </span>
         </div>
         <div className="multiButton">
@@ -149,6 +165,7 @@ const Wrapper = styled.div`
     font-weight: 500;
     line-height: 20px;
   }
+
   .container_row {
     display: flex;
     flex-direction: row;
@@ -158,7 +175,18 @@ const Wrapper = styled.div`
     padding: 0px;
     gap: 3.5vw;
   }
-
+  .inputIconWrapper {
+    position: relative;
+  }
+  .inputIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: auto;
+    padding-right: 7px;
+  }
   .title {
     align-items: flex-start;
     max-width: max-content;
@@ -292,6 +320,10 @@ const Wrapper = styled.div`
     .multiButton {
       width: 90%;
       margin: 0 auto;
+    }
+    .inputIcon {
+      padding: 0;
+      right: 0;
     }
   }
   @media screen and (max-width: 768px) {
