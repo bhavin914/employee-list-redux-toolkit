@@ -202,18 +202,11 @@ const Wrapper = styled.div`
   }
   .button {
     background: #4a3aff;
-    height: 2.5rem;
-    width: 34%;
-    margin: 0 auto;
+    margin: unset;
     max-width: 8rem;
-    color: white;
-    border: none;
     border-radius: 56px;
     cursor: pointer;
-    text-align: center;
-    display: flex;
     align-items: center;
-    justify-content: center;
     margin-top: 15px;
     font-weight: bold;
     margin-right: 0;
@@ -221,6 +214,7 @@ const Wrapper = styled.div`
 
   .multiButton {
     display: flex;
+    justify-content: space-between;
   }
 
   .prevBtn {
@@ -247,6 +241,9 @@ const Wrapper = styled.div`
     .multiButton {
       width: 90%;
       margin: 0 auto;
+    }
+    .container {
+      grid-template-columns: none;
     }
   }
 `;
